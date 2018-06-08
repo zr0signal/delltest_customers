@@ -1,6 +1,6 @@
 ﻿namespace DellTest.Customers.Service.Models
 {
-    public class CustomerUpdate
+    public class CustomerDetails
     {
         public string name { get; set; }
         

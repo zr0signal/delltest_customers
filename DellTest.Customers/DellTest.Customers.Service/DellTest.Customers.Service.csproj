@@ -106,7 +106,8 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="CustomerServiceContext.cs" />
-    <Compile Include="Models\CustomerUpdate.cs" />
+    <Compile Include="Models\CustomerResult.cs" />
+    <Compile Include="Models\CustomerDetails.cs" />
     <Compile Include="Models\ITrackedEntity.cs" />
     <Compile Include="Models\INamedEntity.cs" />
     <Compile Include="Models\IEntity.cs" />

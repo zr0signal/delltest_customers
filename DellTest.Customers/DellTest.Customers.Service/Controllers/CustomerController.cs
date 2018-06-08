@@ -53,25 +53,25 @@ namespace DellTest.Customers.Service.Controllers
 
         [AcceptVerbs("POST", "PUT")]
         [ActionName("add")]
-        [ResponseType(typeof(Customer))]
-        public IHttpActionResult AddCustomer([FromBody] CustomerUpdate customerUpdate)
+        [ResponseType(typeof(CustomerResult))]
+        public IHttpActionResult AddCustomer([FromBody] CustomerDetails customerDetails)
         {
-            if (string.IsNullOrWhiteSpace(customerUpdate?.name) || string.IsNullOrWhiteSpace(customerUpdate.email))
+            if (string.IsNullOrWhiteSpace(customerDetails?.name) || string.IsNullOrWhiteSpace(customerDetails.email))
             {
                 throw new ArgumentException("AddCustomer_InvalidArguments");
             }
 
-            var customer = _ctx.Customers.FirstOrDefault(x => x.Email == customerUpdate.email);
+            var customer = _ctx.Customers.FirstOrDefault(x => x.Email == customerDetails.email);
 
             if (customer != null)
             {
-                return UpdateCustomer(customerUpdate);
+                return UpdateCustomer(customerDetails);
             }
 
             customer = new Customer
             {
-                Name = customerUpdate.name,
-                Email = customerUpdate.email,
+                Name = customerDetails.name,
+                Email = customerDetails.email,
                 IsActive = true,
                 State = CustomerState.Active
             };
@@ -79,32 +79,32 @@ namespace DellTest.Customers.Service.Controllers
             _ctx.Customers.Add(customer);
             _ctx.SaveChanges();
 
-            return Ok(customer);
+            return Ok(new CustomerResult{Id = customer.Id, Data = customer});
         }
 
         [AcceptVerbs("POST", "PUT")]
         [ActionName("update")]
-        [ResponseType(typeof(Customer))]
-        public IHttpActionResult UpdateCustomer([FromBody] CustomerUpdate customerUpdate)
+        [ResponseType(typeof(CustomerResult))]
+        public IHttpActionResult UpdateCustomer([FromBody] CustomerDetails customerDetails)
         {
-            if (string.IsNullOrWhiteSpace(customerUpdate?.name) || string.IsNullOrWhiteSpace(customerUpdate.email))
+            if (string.IsNullOrWhiteSpace(customerDetails?.name) || string.IsNullOrWhiteSpace(customerDetails.email))
             {
                 throw new ArgumentException("UpdateCustomer_InvalidArguments");
             }
 
-            var customer = _ctx.Customers.FirstOrDefault(x => x.Email == customerUpdate.email);
+            var customer = _ctx.Customers.FirstOrDefault(x => x.Email == customerDetails.email);
 
             if (customer == null)
             {
                 return NotFound();
             }
 
-            customer.Name = customerUpdate.name;
-            customer.Email = customerUpdate.email;
+            customer.Name = customerDetails.name;
+            customer.Email = customerDetails.email;
 
             _ctx.SaveChanges();
 
-            return Ok(customer);
+            return Ok(new CustomerResult { Id = customer.Id, Data = customer });
         }
 
         [AcceptVerbs("DELETE")]
