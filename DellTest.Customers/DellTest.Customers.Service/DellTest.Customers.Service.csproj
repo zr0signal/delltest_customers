@@ -94,6 +94,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="ICustomerServiceContext.cs" />
     <Compile Include="Migrations\201806080926578_Initial.cs" />
     <Compile Include="Migrations\201806080926578_Initial.Designer.cs">
       <DependentUpon>201806080926578_Initial.cs</DependentUpon>
@@ -106,6 +107,9 @@
     <Compile Include="Models\Customer.cs" />
     <Compile Include="CustomerServiceContext.cs" />
     <Compile Include="Models\CustomerUpdate.cs" />
+    <Compile Include="Models\ITrackedEntity.cs" />
+    <Compile Include="Models\INamedEntity.cs" />
+    <Compile Include="Models\IEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

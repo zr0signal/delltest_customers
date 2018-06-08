@@ -11,7 +11,7 @@ namespace DellTest.Customers.Service.Models
         Deleted
     }
 
-    public class Customer
+    public class Customer : INamedEntity, ITrackedEntity
     {
         [Key]
         public int Id { get; set; }

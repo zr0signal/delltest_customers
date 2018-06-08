@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DellTest.Customers.Service", "DellTest.Customers.Service\DellTest.Customers.Service.csproj", "{2516BBF2-BDB3-4E13-9D82-4C949503BEC2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DellTest.Customers.Service.Tests", "DellTest.Customers.Service.Tests\DellTest.Customers.Service.Tests.csproj", "{776A72D5-397F-468F-9966-99EFBD1415E7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{2516BBF2-BDB3-4E13-9D82-4C949503BEC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2516BBF2-BDB3-4E13-9D82-4C949503BEC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2516BBF2-BDB3-4E13-9D82-4C949503BEC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{776A72D5-397F-468F-9966-99EFBD1415E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{776A72D5-397F-468F-9966-99EFBD1415E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{776A72D5-397F-468F-9966-99EFBD1415E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{776A72D5-397F-468F-9966-99EFBD1415E7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
