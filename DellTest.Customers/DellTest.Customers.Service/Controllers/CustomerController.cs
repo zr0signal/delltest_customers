@@ -73,7 +73,9 @@ namespace DellTest.Customers.Service.Controllers
                 Name = customerDetails.name,
                 Email = customerDetails.email,
                 IsActive = true,
-                State = CustomerState.Active
+                State = CustomerState.Active,
+                DateCreated = DateTime.UtcNow,
+                DateUpdated = DateTime.UtcNow
             };
 
             _ctx.Customers.Add(customer);
@@ -101,6 +103,7 @@ namespace DellTest.Customers.Service.Controllers
 
             customer.Name = customerDetails.name;
             customer.Email = customerDetails.email;
+            customer.DateUpdated = DateTime.UtcNow;
 
             _ctx.SaveChanges();
 

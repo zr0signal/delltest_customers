@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Dell Test - Customers Service Test</title>
+</head>
+<body>
+
+<div>
+    <h2>Dell Test - Customers Service Test</h2>
+    <input type="text" id="custName" placeholder="Name" />
+    <input type="email" id="custEmail" placeholder="Email" />
+    <input id="addCustomerBtn" type="button" value="Add" />
+    <input id="updateCustomerBtn" type="button" value="Update" />
+</div>
+
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
+<script>
+    var baseUri = 'delltestapi/customer';
+
+    $('#addCustomerBtn').click(function () {
+        var customerDetails = {
+            name: $('#custName').val(),
+            email: $('#custEmail').val()
+        };
+
+        $.ajax({
+            type: "POST",
+            url: baseUri + '/add',
+            data: JSON.stringify(customerDetails),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            processData: true,
+            success: function (data, status, jqXHR) {
+                console.log(data);
+                console.log(status);
+                console.log(jqXHR);
+            },
+            error: function (xhr) {
+                alert(xhr.responseText);
+            }
+        });
+    });
+</script>
+</body>
+</html>
