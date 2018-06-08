@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Http;
+﻿using System.Web.Http;
 
 namespace DellTest.Customers.Service
 {
@@ -15,9 +12,9 @@ namespace DellTest.Customers.Service
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
+                "DellTestApi",
+                "delltestapi/{controller}/{action}/{id}",
+                new {id = RouteParameter.Optional}
             );
         }
     }
