@@ -2,44 +2,137 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Dell Test - Customers Service Test</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+        * {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.75em;
+            font-size: 16px;
+            background-color: #222;
+            color: #aaa;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .container {
+            padding: 10px;
+        }
+
+        .left {
+            float: left;
+            width: 49%;
+        }
+
+        .right {
+            float: right;
+            width: 49%;
+        }
+
+        .inputs, .buttons, .response_container {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .inputs input {
+            width: 100%;
+            height: 25px;
+            background: lightgrey;
+        }
+
+        .buttons > input {
+            float: left;
+            margin-right: 10px;
+        }
+
+        #responseTxt {
+            width: 100%;
+            max-width: 100%;
+            min-width: 100%;
+            height: auto;
+            min-height: 200px;
+            background: lightgrey;
+        }
+    </style>
 </head>
 <body>
-
-<div>
     <h2>Dell Test - Customers Service Test</h2>
-    <input type="text" id="custName" placeholder="Name" />
-    <input type="email" id="custEmail" placeholder="Email" />
-    <input id="addCustomerBtn" type="button" value="Add" />
-    <input id="updateCustomerBtn" type="button" value="Update" />
-</div>
+    <div class="container">
+        <div class="left">
+            <div class="inputs">
+                <p>
+                    <label for="email">Email (required)</label>
+                    <input type="email" name="custEmail" id="custEmail" />
+                </p>
+                <p>
+                    <label for="email">Name (required)</label>
+                    <input type="text" name="custName" id="custName" />
+                </p>
+            </div>
+            <div class="buttons">
+                <input id="addCustomerBtn" type="button" value="Add" />
+                <input id="updateCustomerBtn" type="button" value="Update" />
+                <div style="clear: both"></div>
+            </div>
+            <div class="response_container">
+                <h4>Response</h4>
+                <textarea id="responseTxt"></textarea>
+            </div>
+        </div>
+        <div class="right">
+            Current data (TODO)
+        </div>
+        <div style="clear: both"></div>
+    </div>
+    <script>
+        var AjaxHandler = {
+            Post: function (method) {
+                let baseUri = 'delltestapi/customer';
+                let customerDetails = {
+                    name: $('#custName').val(),
+                    email: $('#custEmail').val()
+                };
 
-<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
-<script>
-    var baseUri = 'delltestapi/customer';
+                if (customerDetails.name === '' || customerDetails.email === '') {
+                    alert('Write something!');
+                    return false;
+                }
 
-    $('#addCustomerBtn').click(function () {
-        var customerDetails = {
-            name: $('#custName').val(),
-            email: $('#custEmail').val()
+                $.ajax({
+                    type: "POST",
+                    url: baseUri + '/' + method,
+                    data: JSON.stringify(customerDetails),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    processData: true,
+                    success: function (data, status) {
+                        console.log(data);
+                        console.log(status);
+                        $('h4').css('color', 'green');
+                        $('#responseTxt').text(JSON.stringify(data));
+                    },
+                    error: function (xhr) {
+                        console.log(xhr.responseText);
+                        $('h4').css('color', 'red');
+                        $('#responseTxt').text(JSON.stringify(xhr.responseText === '' ? xhr.statusText : xhr.responseText));
+                    }
+                });
+            }
         };
 
-        $.ajax({
-            type: "POST",
-            url: baseUri + '/add',
-            data: JSON.stringify(customerDetails),
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            processData: true,
-            success: function (data, status, jqXHR) {
-                console.log(data);
-                console.log(status);
-                console.log(jqXHR);
-            },
-            error: function (xhr) {
-                alert(xhr.responseText);
-            }
+        $('#addCustomerBtn').click(function () {
+            AjaxHandler.Post('add');
         });
-    });
-</script>
+
+        $('#updateCustomerBtn').click(function () {
+            AjaxHandler.Post('update');
+        });
+    </script>
 </body>
 </html>
