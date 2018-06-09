@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using DellTest.Customers.Service.Models;
+using DellTest.Customers.Service.Repository;
 
 namespace DellTest.Customers.Service.Controllers
 {

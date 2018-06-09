@@ -1,5 +1,6 @@
 ﻿using System.Data.Entity;
 using DellTest.Customers.Service.Models;
+using DellTest.Customers.Service.Repository;
 
 namespace DellTest.Customers.Service.Tests.Mock.EntityFramework
 {

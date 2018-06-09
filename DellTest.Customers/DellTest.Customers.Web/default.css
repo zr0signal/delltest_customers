@@ -1,0 +1,55 @@
+﻿* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.75em;
+    font-size: 16px;
+    background-color: #222;
+    color: #aaa;
+}
+
+h2 {
+    text-align: center;
+}
+
+.container {
+    padding: 10px;
+}
+
+.left {
+    float: left;
+    width: 49%;
+}
+
+.right {
+    float: right;
+    width: 49%;
+}
+
+.inputs, .buttons, .response_container {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+    .inputs input {
+        width: 100%;
+        height: 25px;
+        background: lightgrey;
+    }
+
+    .buttons > input {
+        float: left;
+        margin-right: 10px;
+    }
+
+#responseTxt {
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    height: auto;
+    min-height: 200px;
+    background: lightgrey;
+}

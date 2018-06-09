@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Dell Test - Customers Service Test</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/handsontable/3.0.0/handsontable.min.css" type="text/css" rel="stylesheet" />
+    <link href="/default.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+    <h2>Dell Test - Customers Service Test</h2>
+    <div class="container">
+        <div class="left">
+            <div class="inputs">
+                <p>
+                    <label for="email">Email (required)</label>
+                    <input type="email" name="custEmail" id="custEmail" />
+                </p>
+                <p>
+                    <label for="email">Name (required)</label>
+                    <input type="text" name="custName" id="custName" />
+                </p>
+            </div>
+            <div class="buttons">
+                <input id="addCustomerBtn" type="button" value="Add" />
+                <input id="updateCustomerBtn" type="button" value="Update" />
+                <div style="clear: both"></div>
+            </div>
+            <div class="response_container">
+                <h4>Response</h4>
+                <textarea id="responseTxt"></textarea>
+            </div>
+        </div>
+        <div class="right">
+            <div id="customersTable">
+
+            </div>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handsontable/3.0.0/handsontable.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

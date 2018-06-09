@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DellTest.Customers.Service"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DellTest.Customers.Service.Tests", "DellTest.Customers.Service.Tests\DellTest.Customers.Service.Tests.csproj", "{776A72D5-397F-468F-9966-99EFBD1415E7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DellTest.Customers.Web", "DellTest.Customers.Web\DellTest.Customers.Web.csproj", "{D093913B-E3DE-4B1C-BAAC-CE891F8BEA3D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{776A72D5-397F-468F-9966-99EFBD1415E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{776A72D5-397F-468F-9966-99EFBD1415E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{776A72D5-397F-468F-9966-99EFBD1415E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D093913B-E3DE-4B1C-BAAC-CE891F8BEA3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D093913B-E3DE-4B1C-BAAC-CE891F8BEA3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D093913B-E3DE-4B1C-BAAC-CE891F8BEA3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D093913B-E3DE-4B1C-BAAC-CE891F8BEA3D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,4 +1,5 @@
 ﻿using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace DellTest.Customers.Service
 {
@@ -6,9 +7,8 @@ namespace DellTest.Customers.Service
     {
         public static void Register(HttpConfiguration config)
         {
-            // Web API configuration and services
+            config.EnableCors(new EnableCorsAttribute("http://localhost:63403", "*", "*"));
 
-            // Web API routes
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(

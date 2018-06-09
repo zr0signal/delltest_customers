@@ -31,6 +31,12 @@ namespace DellTest.Customers.Service.Tests
 
         #endregion
 
+        #region /GetAll
+
+        // TODO
+
+        #endregion
+
         #region /GetCustomer
 
         [TestMethod]
