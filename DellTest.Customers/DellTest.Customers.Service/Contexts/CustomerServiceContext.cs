@@ -1,7 +1,7 @@
 ﻿using System.Data.Entity;
 using DellTest.Customers.Service.Models;
 
-namespace DellTest.Customers.Service.Repository
+namespace DellTest.Customers.Service.Contexts
 {
     public class CustomerServiceContext : DbContext, ICustomerServiceContext
     {

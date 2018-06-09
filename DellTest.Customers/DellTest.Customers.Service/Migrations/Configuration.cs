@@ -1,4 +1,4 @@
-using DellTest.Customers.Service.Repository;
+using DellTest.Customers.Service.Contexts;
 using System.Data.Entity.Migrations;
 
 namespace DellTest.Customers.Service.Migrations

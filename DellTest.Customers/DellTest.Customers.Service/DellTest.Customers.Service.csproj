@@ -100,7 +100,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Repository\ICustomerServiceContext.cs" />
+    <Compile Include="Contexts\ICustomerServiceContext.cs" />
     <Compile Include="Migrations\201806080926578_Initial.cs" />
     <Compile Include="Migrations\201806080926578_Initial.Designer.cs">
       <DependentUpon>201806080926578_Initial.cs</DependentUpon>
@@ -111,7 +111,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
-    <Compile Include="Repository\CustomerServiceContext.cs" />
+    <Compile Include="Contexts\CustomerServiceContext.cs" />
     <Compile Include="Models\CustomerResult.cs" />
     <Compile Include="Models\CustomerDetails.cs" />
     <Compile Include="Models\ITrackedEntity.cs" />
