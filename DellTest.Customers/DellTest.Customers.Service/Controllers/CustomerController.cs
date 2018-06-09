@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web.Http;
@@ -31,6 +32,15 @@ namespace DellTest.Customers.Service.Controllers
         #endregion
 
         #region Actions
+
+        [AcceptVerbs("GET")]
+        [ActionName("getall")]
+        [ResponseType(typeof(IEnumerable<Customer>))]
+        public IHttpActionResult GetAll()
+        {
+            var customers = _ctx.Customers.OrderByDescending(x => x.DateUpdated).ToList();
+            return Ok(customers);
+        }
 
         [AcceptVerbs("GET")]
         [ActionName("get")]

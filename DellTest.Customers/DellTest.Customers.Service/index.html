@@ -2,7 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Dell Test - Customers Service Test</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/handsontable/3.0.0/handsontable.min.css" type="text/css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handsontable/3.0.0/handsontable.min.js"></script>
     <style>
         * {
             -webkit-box-sizing: border-box;
@@ -40,16 +42,16 @@
             margin-bottom: 10px;
         }
 
-        .inputs input {
-            width: 100%;
-            height: 25px;
-            background: lightgrey;
-        }
+            .inputs input {
+                width: 100%;
+                height: 25px;
+                background: lightgrey;
+            }
 
-        .buttons > input {
-            float: left;
-            margin-right: 10px;
-        }
+            .buttons > input {
+                float: left;
+                margin-right: 10px;
+            }
 
         #responseTxt {
             width: 100%;
@@ -86,14 +88,61 @@
             </div>
         </div>
         <div class="right">
-            Current data (TODO)
+            <div id="customersTable">
+
+            </div>
         </div>
         <div style="clear: both"></div>
     </div>
     <script>
-        var AjaxHandler = {
+        var CustomerHandler = {
+            baseUri: 'delltestapi/customer',
+            CreateDataTable: function () {
+                let container = document.getElementById('customersTable');
+                let table = new Handsontable(container, {
+                    data: this.Data,
+                    colHeaders: ['Name', 'Email', 'Updated'],
+                    columns: [
+                        {
+                            data: 'Name',
+                            editor: false
+                        },
+                        {
+                            data: 'Email',
+                            editor: false
+                        },
+                        {
+                            data: 'DateUpdated',
+                            editor: false
+                        }
+                    ],
+                    columnSorting: true,
+                    sortIndicator: true,
+                    rowHeaders: true,
+                    filters: true,
+                    dropdownMenu: true
+                });
+
+                return table;
+            },
+            UpdateData: function () {
+                $.ajax({
+                    type: "GET",
+                    url: this.baseUri + '/getall',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data, status) {
+                        console.log(data);
+                        console.log(status);
+                        dataTable.updateSettings({ data: data});
+                        dataTable.render();
+                    },
+                    error: function (xhr) {
+                        console.log(xhr.responseText);
+                    }
+                });
+            },
             Post: function (method) {
-                let baseUri = 'delltestapi/customer';
                 let customerDetails = {
                     name: $('#custName').val(),
                     email: $('#custEmail').val()
@@ -106,7 +155,7 @@
 
                 $.ajax({
                     type: "POST",
-                    url: baseUri + '/' + method,
+                    url: this.baseUri + '/' + method,
                     data: JSON.stringify(customerDetails),
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
@@ -116,6 +165,7 @@
                         console.log(status);
                         $('h4').css('color', 'green');
                         $('#responseTxt').text(JSON.stringify(data));
+                        CustomerHandler.UpdateData();
                     },
                     error: function (xhr) {
                         console.log(xhr.responseText);
@@ -126,12 +176,18 @@
             }
         };
 
+        var dataTable = CustomerHandler.CreateDataTable();
+
+        $(document).ready(function () {
+            CustomerHandler.UpdateData();
+        });
+
         $('#addCustomerBtn').click(function () {
-            AjaxHandler.Post('add');
+            CustomerHandler.Post('add');
         });
 
         $('#updateCustomerBtn').click(function () {
-            AjaxHandler.Post('update');
+            CustomerHandler.Post('update');
         });
     </script>
 </body>
