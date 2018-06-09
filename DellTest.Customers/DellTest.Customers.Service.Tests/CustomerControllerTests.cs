@@ -77,6 +77,10 @@ namespace DellTest.Customers.Service.Tests
                 "AddCustomer_InvalidArguments");
             Assert.ThrowsException<ArgumentException>(() => _controller.AddCustomer(new CustomerDetails {email = ""}),
                 "AddCustomer_InvalidArguments");
+            Assert.ThrowsException<ArgumentException>(() => _controller.AddCustomer(new CustomerDetails { email = "invalidemail" }),
+                "AddCustomer_InvalidEmail");
+            Assert.ThrowsException<ArgumentException>(() => _controller.AddCustomer(new CustomerDetails { email = "invalidemail@nothing" }),
+                "AddCustomer_InvalidEmail");
         }
 
         [TestMethod]
@@ -150,6 +154,10 @@ namespace DellTest.Customers.Service.Tests
                 "UpdateCustomer_InvalidArguments");
             Assert.ThrowsException<ArgumentException>(
                 () => _controller.UpdateCustomer(new CustomerDetails {email = ""}), "UpdateCustomer_InvalidArguments");
+            Assert.ThrowsException<ArgumentException>(() => _controller.AddCustomer(new CustomerDetails { email = "invalidemail" }),
+                "UpdateCustomer_InvalidEmail");
+            Assert.ThrowsException<ArgumentException>(() => _controller.AddCustomer(new CustomerDetails { email = "invalidemail@nothing" }),
+                "UpdateCustomer_InvalidEmail");
         }
 
         [TestMethod]
@@ -203,7 +211,7 @@ namespace DellTest.Customers.Service.Tests
 
         #endregion
 
-        #region /DeteleCustomer
+        #region /DeleteCustomer
 
         // TODO
 

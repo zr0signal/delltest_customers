@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web.Http;
 using System.Web.Http.Description;
 using DellTest.Customers.Service.Models;
@@ -61,6 +62,11 @@ namespace DellTest.Customers.Service.Controllers
                 throw new ArgumentException("AddCustomer_InvalidArguments");
             }
 
+            if (!IsValidEmail(customerDetails.email))
+            {
+                throw new ArgumentException("AddCustomer_InvalidEmail");
+            }
+
             var customer = _ctx.Customers.FirstOrDefault(x => x.Email == customerDetails.email);
 
             if (customer != null)
@@ -92,6 +98,11 @@ namespace DellTest.Customers.Service.Controllers
             if (string.IsNullOrWhiteSpace(customerDetails?.name) || string.IsNullOrWhiteSpace(customerDetails.email))
             {
                 throw new ArgumentException("UpdateCustomer_InvalidArguments");
+            }
+
+            if (!IsValidEmail(customerDetails.email))
+            {
+                throw new ArgumentException("UpdateCustomer_InvalidEmail");
             }
 
             var customer = _ctx.Customers.FirstOrDefault(x => x.Email == customerDetails.email);
@@ -131,6 +142,18 @@ namespace DellTest.Customers.Service.Controllers
             _ctx.SaveChanges();
 
             return true;
+        }
+
+        #endregion
+
+        #region Helpers
+
+        private static bool IsValidEmail(string str)
+        {
+            var regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+            var match = regex.Match(str);
+
+            return match.Success;
         }
 
         #endregion
