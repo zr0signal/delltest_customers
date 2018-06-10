@@ -34,16 +34,18 @@ h2 {
     margin-bottom: 10px;
 }
 
-    .inputs input {
-        width: 100%;
-        height: 25px;
-        background: lightgrey;
-    }
+.inputs input {
+    width: 100%;
+    height: 25px;
+    background: lightgrey;
+    border-radius: 3px;
+}
 
-    .buttons > input {
-        float: left;
-        margin-right: 10px;
-    }
+.buttons > input {
+    float: left;
+    margin-right: 10px;
+    border-radius: 2px;
+}
 
 #responseTxt {
     width: 100%;
@@ -52,4 +54,5 @@ h2 {
     height: auto;
     min-height: 200px;
     background: lightgrey;
+    border-radius: 3px;
 }
