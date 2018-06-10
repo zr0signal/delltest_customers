@@ -19,8 +19,9 @@ Visual Studio 2017 with the desktp and web developement features installed
 2. Open the 'DellTest.Customers.sln' solution file in Visual Studio
 3. Build the solution
 4. Run the 'DellTest.Customers.Service' project
-5. (Optional) Run the 'DellTest.Customers.Web' project (while 'DellTest.Customers.Service' is also running) if you want to explore api's actions and data. See [this](https://msdn.microsoft.com/en-us/library/ms165413.aspx) for running multiple projects at the same time.
+5. (Optional) Run the 'DellTest.Customers.Web' project (while 'DellTest.Customers.Service' is also running) if you want to explore api's actions and data.
 ```
+See [this](https://msdn.microsoft.com/en-us/library/ms165413.aspx) for running multiple projects at the same time.
 
 ### Request Example
 Type: POST
